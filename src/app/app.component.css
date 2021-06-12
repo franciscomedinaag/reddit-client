@@ -1,0 +1,13 @@
+.sidebar-container {
+    color: white;
+    background: #030303;
+    width: 32%;
+    height: 100vh;
+}
+.home-page {
+    display: flex;
+}
+
+.post-container {
+    width: 68%;
+}
