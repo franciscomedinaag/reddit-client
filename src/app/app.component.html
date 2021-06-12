@@ -14,7 +14,7 @@
     <ng-template #defaultBlock>
       <img *ngIf="featuredPost.media?.includes('.jpg') || featuredPost.media?.includes('.png'); else urlBlock" [src]="featuredPost.media" class="featuredMedia" alt="">
       <ng-template #urlBlock>
-        <a *ngIf="featuredPost.thumb == 'default'" [href]="featuredPost.media" class="featuredMedia"> Click here </a>
+        <a *ngIf="featuredPost.thumb == 'default'" [href]="featuredPost.media" class="featuredMedia" target="_blank" rel="noopener noreferrer"> Click here </a>
       </ng-template>
     </ng-template>
     <p>{{featuredPost?.title}}</p>

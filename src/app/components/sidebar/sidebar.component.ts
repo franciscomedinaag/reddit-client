@@ -20,7 +20,6 @@ export class SidebarComponent implements OnInit {
   
   selectPost(post:any){
     this.onSelectedPost.emit(post)
-    //this.postDataArray.forEach((p)=>{ if(p.id==post.id) p.seen=true })
     post.seen=true
   }
 
@@ -28,10 +27,11 @@ export class SidebarComponent implements OnInit {
     this.api.get('https://www.reddit.com/r/all/top.json?count=0&limit=50')
     .subscribe(async (posts:any)=>{
       posts.data.children.forEach((postRawData:any) => {
+        
         let postData = {
           id:postRawData.data.id,
           title:postRawData.data.title,
-          preview_title:postRawData.data.title.substring(0,75) + "...",
+          preview_title:postRawData.data.title.length >= 75 ? (postRawData.data.title.substring(0,75) + "...") : postRawData.data.title, //preview text in list
           author:postRawData.data.author,
           created:this.timeSince(new Date(postRawData.data.created * 1000)) + " ago",
           thumb:postRawData.data.thumbnail,
