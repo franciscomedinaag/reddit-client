@@ -118,6 +118,7 @@ p.post-title {
 .post-preview img {
     width: 27%;
     margin-right: 9px;
+    max-width: 100px;
 }
 
 p.dismiss-label {
