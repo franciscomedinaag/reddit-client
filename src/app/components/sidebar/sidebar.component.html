@@ -4,12 +4,12 @@
     </div>
     <div class="posts-list">
         <div *ngFor="let post of postDataArray" class="post-block">
-            <div [id]="post.id" class="post-sub_block">
+            <div [id]="post.id" class="post-sub_block" [ngClass]="post.seen ? 'seen-post' : 'unseen-post'">
                 <div>
-                    <p class="post-title"><i class="fas fa-sm fa-circle"></i>{{post.author}} <span>{{post.created}}</span></p>
-                    <div class="post-preview">
-                       <img [src]="post.thumb">
-                       <p>{{post.title}}</p> 
+                    <p class="post-title" (click)="selectPost(this.post)"><i [ngClass]="post.seen ? 'seen-dot' : 'unseen-dot'" class="fas fa-sm fa-circle"></i>{{post.author}} <span>{{post.created}}</span></p>
+                    <div class="post-preview" (click)="selectPost(this.post)">
+                       <img *ngIf="post" [src]="post?.thumb" alt="" >
+                       <p>{{post.preview_title}}</p> 
                     </div>
                     <div class="post-footer">
                         <p (click)="dismissPost(post.id);" class="dismiss-label"><i class="far fa-times-circle"></i> Dismiss Post</p>
@@ -20,7 +20,7 @@
                     <i class="fas fa-lg fa-chevron-right"></i>
                 </div>
             </div>
-            <hr>
+            <hr style="border-color: gray;">
         </div>
     </div>
     <div (click)="dismissAll();" class="dismiss-block">

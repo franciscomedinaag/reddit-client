@@ -1,5 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common'; 
+import { Component, OnInit, Inject, EventEmitter, Output } from '@angular/core';
 import { DataApiService } from 'src/app/services/data-api.service';
 
 @Component({
@@ -11,10 +10,18 @@ export class SidebarComponent implements OnInit {
 
   constructor(public api:DataApiService) { }
 
+  @Output() onSelectedPost = new EventEmitter<any>();
+
   public postDataArray:Array<any>=[]
 
   ngOnInit(): void {
     this.getPosts()
+  }
+  
+  selectPost(post:any){
+    this.onSelectedPost.emit(post)
+    //this.postDataArray.forEach((p)=>{ if(p.id==post.id) p.seen=true })
+    post.seen=true
   }
 
   getPosts(): void{
@@ -24,12 +31,13 @@ export class SidebarComponent implements OnInit {
         let postData = {
           id:postRawData.data.id,
           title:postRawData.data.title,
+          preview_title:postRawData.data.title.substring(0,75) + "...",
           author:postRawData.data.author,
           created:this.timeSince(new Date(postRawData.data.created * 1000)) + " ago",
           thumb:postRawData.data.thumbnail,
           num_comments:postRawData.data.num_comments,
           seen:false,
-          media:postRawData.data.media ? postRawData.data.media.reddit_video.fallback_url : postRawData.data.url,
+          media:postRawData.data.media ? postRawData.data.media?.reddit_video?.fallback_url : postRawData.data.url,
           video:Boolean(postRawData.data.media)
         }
         this.postDataArray.push(postData)

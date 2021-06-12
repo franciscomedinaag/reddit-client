@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'reddit-client';
+  
+  public featuredPost:any={title:"", author:"", thumb:""}
+
+  displayPost(post:any):void{
+    console.log("Selected post: ", post)
+    this.featuredPost=post
+  }
 }

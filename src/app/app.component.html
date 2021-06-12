@@ -1,8 +1,22 @@
 <div class="home-page">
   <div class="sidebar-container">
-    <app-sidebar></app-sidebar>
+    <app-sidebar (onSelectedPost)="displayPost($event)"></app-sidebar>
   </div>
   <div class="post-container">
-    <p>featured post</p>
+    <h3>{{featuredPost?.author}}</h3>
+    <div *ngIf="featuredPost.video; then videoBlock else defaultBlock"></div>
+    <ng-template #videoBlock>
+      <video controls autoplay class="featuredMedia" >
+        <source [src]="featuredPost.media"   type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </ng-template>
+    <ng-template #defaultBlock>
+      <img *ngIf="featuredPost.media?.includes('.jpg') || featuredPost.media?.includes('.png'); else urlBlock" [src]="featuredPost.media" class="featuredMedia" alt="">
+      <ng-template #urlBlock>
+        <a *ngIf="featuredPost.thumb == 'default'" [href]="featuredPost.media" class="featuredMedia"> Click here </a>
+      </ng-template>
+    </ng-template>
+    <p>{{featuredPost?.title}}</p>
   </div>
 </div>

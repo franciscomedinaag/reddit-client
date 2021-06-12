@@ -3,6 +3,7 @@
     visibility: visible;
     opacity: 1;
     transition: opacity 0.5s linear;
+    cursor:default
 }
 .posts-list {
     height: 86.4vh;
@@ -15,8 +16,20 @@
     justify-content: space-between;
 }
 
-i.fas.fa-circle {
+.post-block:active{
+    background-color: white;
+    -webkit-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
+}
+
+.unseen-dot {
     color: #275dbf;
+    margin-right: 8px;
+}
+
+.seen-dot {
+    opacity:0;
     margin-right: 8px;
 }
 
@@ -27,7 +40,9 @@ p.post-title span {
 
 p.post-title {
     font-size: 17px;
-    margin-top: 1px
+    margin-top: 1px;
+    margin-bottom: 0px;
+    padding-bottom: 13px;
 }
 
 .title h2 {
@@ -43,6 +58,7 @@ p.post-title {
 .post-preview {
     display: flex;
     align-items: center;
+    padding-right: 17px;
 }
 
 .post-preview img {
@@ -87,4 +103,8 @@ p.dismiss-label i {
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s 0.5s, opacity 0.5s linear;
-  }
+}
+
+.seen-post{
+    color:gray
+}
