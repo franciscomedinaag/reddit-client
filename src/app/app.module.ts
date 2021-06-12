@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 import { DataApiService } from './services/data-api.service';
+import { NavMobileComponent } from './components/nav-mobile/nav-mobile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent
+    SidebarComponent,
+    NavMobileComponent
   ],
   imports: [
     BrowserModule,

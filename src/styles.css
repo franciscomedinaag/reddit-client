@@ -1,2 +1,169 @@
-/* You can add global styles to this file, and also import other style files */
+/* General */
 body { margin: 0; font-family: 'IBM Plex Sans', sans-serif; }
+
+/* App Component */
+.sidebar-container {
+    color: white;
+    background: #030303;
+    width: 32%;
+}
+.home-page {
+    display: flex;
+}
+
+.post-container {
+    width: 68%;
+    padding: 12px 25px;
+}
+
+.featuredMedia {
+    margin-left: auto;
+    margin-right: auto;
+    display:flex;
+    justify-content: center;
+    width: 50%;
+}
+
+@media (max-width: 1000px) and (min-width: 500px) {
+    .sidebar-container {
+        width: 45%;
+    }
+    .featuredMedia {
+        width: 80%;
+    }
+}
+
+@media (max-width: 499px){
+    .sidebar-container{
+        width: 0%;
+    }
+
+    .post-container {
+        width: 100%;
+        padding: 0px;
+    }
+}
+
+/* Sidebar */
+.post-block {
+    padding: 0px 21px 0px 11px;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s linear;
+    cursor:default
+}
+.posts-list {
+    height: 86.4vh;
+    overflow: auto;
+}
+
+.post-sub_block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.post-block:active{
+    background-color: white;
+    -webkit-transition: background-color 500ms linear;
+    -ms-transition: background-color 500ms linear;
+    transition: background-color 500ms linear;
+}
+
+.unseen-dot {
+    color: #275dbf;
+    margin-right: 8px;
+}
+
+.seen-dot {
+    opacity:0;
+    margin-right: 8px;
+}
+
+p.post-title span {
+    font-size: 14px;
+    margin-left: 6px;
+}
+
+p.post-title {
+    font-size: 17px;
+    margin-top: 1px;
+    margin-bottom: 0px;
+    padding-bottom: 13px;
+}
+
+.title h2 {
+    margin: 0px;
+}
+.title {
+    background: #292929;
+    color: white;
+    text-align: center;
+    padding: 16px 0px 12px;
+}
+
+.post-preview {
+    display: flex;
+    align-items: center;
+    padding-right: 17px;
+    width: 100%;
+}
+
+.post-preview img {
+    width: 27%;
+    margin-right: 9px;
+}
+
+p.dismiss-label {
+    margin-right: 23px;
+    cursor: pointer;
+    color: white;
+}
+
+p.dismiss-label i {
+    color: #ff5e24;
+}
+
+.post-footer {
+    display: flex;
+    color: #ff5e24;
+}
+.post-footer p {
+    margin-bottom: 4px;
+}
+
+.dismiss-block {
+    color: #ff5e24;
+    text-align: center;
+    cursor: pointer;
+    padding: 16px 0px;
+}
+
+.dismiss-block p {
+    margin:0px;
+}
+
+.dismiss-block:hover {
+    background-color: #292929;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.5s, opacity 0.5s linear;
+}
+
+.seen-post{
+    color:gray
+}
+
+
+/* Navbar */
+@media (min-width: 499px){
+    .navbar{
+        display: none;
+    }
+}
+.navbar{
+    background-color: #292929;
+}
