@@ -13,10 +13,10 @@
                     </div>
                     <div class="post-footer">
                         <p (click)="dismissPost(post.id);" class="dismiss-label"><i class="far fa-times-circle"></i> Dismiss Post</p>
-                        <p>{{post.num_comments}} comments</p>
+                        <p (click)="selectPost(this.post)">{{post.num_comments}} comments</p>
                     </div>
                 </div>
-                <div>
+                <div (click)="selectPost(this.post)">
                     <i class="fas fa-lg fa-chevron-right"></i>
                 </div>
             </div>

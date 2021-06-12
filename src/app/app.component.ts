@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'reddit-client';
-  
   public featuredPost:any={title:"", author:"", thumb:""}
+  
+  constructor(private elRef: ElementRef){}
 
   displayPost(post:any):void{
-    console.log("Selected post: ", post)
     this.featuredPost=post
+    const player = this.elRef.nativeElement.querySelector('video');
+    try{player.load()}
+    catch{ }
   }
 }

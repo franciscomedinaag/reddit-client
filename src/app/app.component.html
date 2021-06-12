@@ -6,7 +6,7 @@
     <h3>{{featuredPost?.author}}</h3>
     <div *ngIf="featuredPost.video; then videoBlock else defaultBlock"></div>
     <ng-template #videoBlock>
-      <video controls autoplay class="featuredMedia" >
+      <video id="videoElement" controls class="featuredMedia" >
         <source [src]="featuredPost.media"   type="video/mp4">
         Your browser does not support the video tag.
       </video>
