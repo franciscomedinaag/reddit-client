@@ -37,10 +37,16 @@ body { margin: 0; font-family: 'IBM Plex Sans', sans-serif; }
     .sidebar-container{
         width: 0%;
     }
-
     .post-container {
         width: 100%;
         padding: 0px;
+    }
+    .title, .hideOnMobile{
+        display: none;
+    }
+
+    .post-container p, .post-container h3 {
+        padding: 0px 13px;
     }
 }
 
@@ -166,4 +172,17 @@ p.dismiss-label i {
 }
 .navbar{
     background-color: #292929;
+    color: white;
+}
+
+/* Spinner */
+i.fas.fa-spinner.fa-3x.fa-spin {
+    display: flex;
+    justify-content: center;
+    color: #ff5e24;
+    margin-top: 20px;
+}
+
+.hide{
+    display: none !important;
 }

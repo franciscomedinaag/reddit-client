@@ -1,9 +1,9 @@
 <div class="home-page">
   <div class="sidebar-container">
-    <app-sidebar (onSelectedPost)="displayPost($event)"></app-sidebar>
+    <app-sidebar [showDismissAllMobile]=false (onSelectedPost)="displayPost($event)"></app-sidebar>
   </div>
   <div class="post-container">
-    <app-nav-mobile></app-nav-mobile>
+    <app-nav-mobile (onSelectedPost)="displayPost($event)"></app-nav-mobile>
     <h3>{{featuredPost?.author}}</h3>
     <div *ngIf="featuredPost.video; then videoBlock else defaultBlock"></div>
     <ng-template #videoBlock>

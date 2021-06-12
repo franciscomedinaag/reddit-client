@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Inject, EventEmitter, Output, Input } from '@angular/core';
 import { DataApiService } from 'src/app/services/data-api.service';
 
 @Component({
@@ -9,13 +9,15 @@ import { DataApiService } from 'src/app/services/data-api.service';
 export class SidebarComponent implements OnInit {
 
   constructor(public api:DataApiService) { }
-
+  
   @Output() onSelectedPost = new EventEmitter<any>();
+  @Input() showDismissAllMobile: boolean | undefined;
 
   public postDataArray:Array<any>=[]
 
   ngOnInit(): void {
     this.getPosts()
+    console.log(this.showDismissAllMobile)
   }
   
   selectPost(post:any){

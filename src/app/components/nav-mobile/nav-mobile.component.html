@@ -5,7 +5,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-
+        <app-sidebar [showDismissAllMobile]=true (onSelectedPost)="displayPost($event)"></app-sidebar>
       </ul>
     </div>
-  </nav>
+</nav>

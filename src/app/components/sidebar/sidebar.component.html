@@ -3,27 +3,28 @@
         <p>Reddit Posts</p>
     </div>
     <div class="posts-list">
+        <i [ngClass]="postDataArray.length == 0 ? 'show' : 'hide'" class="fas fa-spinner fa-3x fa-spin"></i>
         <div *ngFor="let post of postDataArray" class="post-block">
             <div [id]="post.id" class="post-sub_block" [ngClass]="post.seen ? 'seen-post' : 'unseen-post'">
                 <div>
-                    <p class="post-title" (click)="selectPost(this.post)"><i [ngClass]="post.seen ? 'seen-dot' : 'unseen-dot'" class="fas fa-sm fa-circle"></i>{{post.author}} <span>{{post.created}}</span></p>
-                    <div class="post-preview" (click)="selectPost(this.post)">
+                    <p data-bs-toggle="collapse"  data-toggle="collapse" data-target=".navbar-collapse.show" class="post-title" (click)="selectPost(this.post)"><i [ngClass]="post.seen ? 'seen-dot' : 'unseen-dot'" class="fas fa-sm fa-circle"></i>{{post.author}} <span>{{post.created}}</span></p>
+                    <div data-bs-toggle="collapse"  data-toggle="collapse" data-target=".navbar-collapse.show" class="post-preview" (click)="selectPost(this.post)">
                        <img *ngIf="post" [src]="post?.thumb" alt="" >
                        <p>{{post.preview_title}}</p> 
                     </div>
                     <div class="post-footer">
                         <p (click)="dismissPost(post.id);" class="dismiss-label"><i class="far fa-times-circle"></i> Dismiss Post</p>
-                        <p (click)="selectPost(this.post)">{{post.num_comments}} comments</p>
+                        <p data-bs-toggle="collapse"  data-toggle="collapse" data-target=".navbar-collapse.show" (click)="selectPost(this.post)">{{post.num_comments}} comments</p>
                     </div>
                 </div>
-                <div (click)="selectPost(this.post)">
+                <div data-bs-toggle="collapse"  data-toggle="collapse" data-target=".navbar-collapse.show" (click)="selectPost(this.post)">
                     <i class="fas fa-lg fa-chevron-right"></i>
                 </div>
             </div>
             <hr style="border-color: gray;">
         </div>
     </div>
-    <div (click)="dismissAll();" class="dismiss-block">
+    <div [ngClass]="showDismissAllMobile ? 'showOnMobile' : 'hideOnMobile' " (click)="dismissAll();" class="dismiss-block">
         <p>Dismiss All</p>
     </div>
 </div>
