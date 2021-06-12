@@ -101,6 +101,7 @@ p.post-title {
 .post-preview img {
     width: 27%;
     margin-right: 9px;
+    max-width: 100px;
 }
 p.dismiss-label {
     margin-right: 23px;
@@ -158,4 +159,4 @@ i.fas.fa-spinner.fa-3x.fa-spin {
     display: none !important;
 }
 
-/*# sourceMappingURL=styles.0be66825f8cceee6bf60.css.map*/
+/*# sourceMappingURL=styles.a98b3109fc477ed8dd05.css.map*/
