@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common'; 
 import { DataApiService } from 'src/app/services/data-api.service';
 
 @Component({
@@ -10,20 +11,15 @@ export class SidebarComponent implements OnInit {
 
   constructor(public api:DataApiService) { }
 
-  public offset:number=0;
-  public postQuantity:number=10; //show 10 posts
-  public postLimit:number=50; //show 10 posts
-  public queryAfter:number=50; //show 10 posts
   public postDataArray:Array<any>=[]
 
   ngOnInit(): void {
-    this.getInitialPosts(this.offset, this.postQuantity)
+    this.getPosts()
   }
 
-  getInitialPosts(offset:number, postQuantity:number): void{
-    this.api.get('https://www.reddit.com/r/all/top.json?count='+offset+'&limit='+postQuantity)
+  getPosts(): void{
+    this.api.get('https://www.reddit.com/r/all/top.json?count=0&limit=50')
     .subscribe(async (posts:any)=>{
-      this.queryAfter=posts.data.after
       posts.data.children.forEach((postRawData:any) => {
         let postData = {
           id:postRawData.data.id,
@@ -38,9 +34,24 @@ export class SidebarComponent implements OnInit {
         }
         this.postDataArray.push(postData)
       });
-      console.log(this.postDataArray)
     })
   }
+  
+  async dismissPost(postId:string){
+    document.getElementById(postId)?.classList.add("hidden")
+    await this.delay(500);
+    this.postDataArray=this.postDataArray.filter(p=>p.id!=postId)
+  }
+
+  async dismissAll(){
+    this.postDataArray.forEach((post)=>{
+      document.getElementById(post.id)?.classList.add("hidden")
+    })
+    await this.delay(500);
+    this.postDataArray=[]
+  }
+
+   delay = (ms:any) => new Promise(res => setTimeout(res, ms));
 
    timeSince(date:any) {
     var seconds = Math.floor((+new Date() - date) / 1000); 
